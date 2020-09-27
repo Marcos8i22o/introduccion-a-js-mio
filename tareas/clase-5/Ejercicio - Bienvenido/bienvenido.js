@@ -10,8 +10,13 @@ $botonMostrar.onclick = function() {
     const $parrafo = document.createElement('p');
     const $textoDelParrafo = document.createTextNode(`Tu nombre es ${primerNombreUsuario} ${segundoNombreUsuario} ${apellidoUsuario}, y tenés ${edadUsuario} años.`);
     
+   
+
     $parrafo.appendChild($textoDelParrafo);
     $resultado.appendChild($parrafo);
+
+    document.querySelector('h1').textContent += ` ${primerNombreUsuario}!`;
+    
     
     return false;
 }
