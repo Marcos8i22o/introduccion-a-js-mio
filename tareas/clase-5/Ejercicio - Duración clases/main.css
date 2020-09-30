@@ -1,0 +1,32 @@
+/*.clase {
+    padding-left: 0.50%;
+    font-size: large;
+    color: white;
+    background-color: brown;
+    text-align: center;
+}
+
+input {
+    background-color: yellow;
+}
+
+
+label {
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.42857;
+    color: rgba(0,0,0,0.9);
+    display: block;
+    margin: 1.2rem 0 0.3rem;
+}
+*/
+
+.oculto {
+    display: none;
+}
+
+
+body {
+    background-color:green;
+}
+
