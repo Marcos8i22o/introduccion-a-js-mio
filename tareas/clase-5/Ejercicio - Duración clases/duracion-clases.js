@@ -4,9 +4,10 @@ const $botonCantidadDeClases = document.querySelector('#enviar');
 
 $botonCantidadDeClases.onclick = function () {
 
-  // const claseUno = document.querySelector('clase1').checkbox;
-  // console.log (claseUno)
-  const numeroClase = "uno";
+  const casillerosClases = [];
+
+  let numeroClase = '';
+  almacenarCasillerosClases(casillerosClases,numeroClase);
   habilitarClase(numeroClase);
 }
 
@@ -28,4 +29,24 @@ function habilitarClase (numeroClase){
   
 }
 
+function almacenarCasillerosClases (casillerosClases,numeroClase) {
+  
+ 
+  for (let i = 1; i <= 5; i++) {
+    casillerosClases.push(document.querySelector(`input[name=clase${i}]`).checked);
+  }
 
+}
+
+
+//   for (let i = 1; i <= casillerosClases.length; i++) {
+    
+//     if (casillerosClases[i]) {
+//       numeroClase = casillerosClases[i+1].toString();
+//       console.log(numeroClase)
+//     }
+//   }
+
+  
+
+// }
