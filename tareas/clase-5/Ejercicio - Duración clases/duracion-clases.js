@@ -3,25 +3,33 @@ const $botonCantidadDeClases = document.querySelector("#enviar");
 
 $botonCantidadDeClases.onclick = function () {
   const casillerosClases = [];
+  const clasesElegidas = [];
 
-  let numeroClase = "";
-  almacenarCasillerosClases(casillerosClases, numeroClase);
-  guardarClasesElegidas(casillerosClases);
-  habilitarClase(numeroClase);
+  almacenarCasillerosClases(casillerosClases);
+  guardarClasesElegidas(casillerosClases, clasesElegidas);
+  habilitarClase(clasesElegidas);
+
+  return false;
 };
 
 $botonCalcular.onclick = function () {
   return false;
 };
 
-function habilitarClase(numeroClase) {
-  const horas = document.querySelector(`#hora-clase-${numeroClase}`);
-  const minutos = document.querySelector(`#minutos-clase-${numeroClase}`);
-  const segundos = document.querySelector(`#segundos-clase-${numeroClase}`);
+function habilitarClase(clasesElegidas) {
+  for (let i = 0; i < clasesElegidas.length; i++) {
+    let $horas = document.querySelector(`#hora-clase-${clasesElegidas[i]}`);
+    let $minutos = document.querySelector(
+      `#minutos-clase-${clasesElegidas[i]}`
+    );
+    let $segundos = document.querySelector(
+      `#segundos-clase-${clasesElegidas[i]}`
+    );
 
-  horas.disabled = false;
-  minutos.disabled = false;
-  segundos.disabled = false;
+    $horas.disabled = false;
+    $minutos.disabled = false;
+    $segundos.disabled = false;
+  }
 }
 
 function almacenarCasillerosClases(casillerosClases) {
@@ -32,10 +40,7 @@ function almacenarCasillerosClases(casillerosClases) {
   }
 }
 
-function guardarClasesElegidas(casillerosClases) {
-  
-  const clasesElegidas = [];
-
+function guardarClasesElegidas(casillerosClases, clasesElegidas) {
   for (let i = 0; i < casillerosClases.length; i++) {
     if (casillerosClases[i]) {
       switch (i) {
@@ -58,7 +63,6 @@ function guardarClasesElegidas(casillerosClases) {
           clasesElegidas.push("");
           break;
       }
-      
     }
   }
   return clasesElegidas;
