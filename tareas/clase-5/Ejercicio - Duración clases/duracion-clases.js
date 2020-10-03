@@ -1,9 +1,10 @@
 const $botonCalcular = document.querySelector("#calcular");
 const $botonCantidadDeClases = document.querySelector("#enviar");
 
+const clasesElegidas = [];
+
 $botonCantidadDeClases.onclick = function () {
   const casillerosClases = [];
-  const clasesElegidas = [];
 
   almacenarCasillerosClases(casillerosClases);
   guardarClasesElegidas(casillerosClases, clasesElegidas);
@@ -13,6 +14,15 @@ $botonCantidadDeClases.onclick = function () {
 };
 
 $botonCalcular.onclick = function () {
+  const duracionTotalClases = {
+    acumuladorHoras: 0,
+    acumuladorMinutos: 0,
+    acumuladorSegundos: 0,
+  };
+
+  calcularDuracionTotalClases(clasesElegidas, duracionTotalClases);
+  mostrarDuracionTotalClases(duracionTotalClases);
+
   return false;
 };
 
@@ -66,4 +76,32 @@ function guardarClasesElegidas(casillerosClases, clasesElegidas) {
     }
   }
   return clasesElegidas;
+}
+
+function calcularDuracionTotalClases(clasesElegidas, duracionTotalClases) {
+  for (let i = 0; i < clasesElegidas.length; i++) {
+    let horas = Number(
+      document.querySelector(`#hora-clase-${clasesElegidas[i]}`).value
+    );
+    let minutos = Number(
+      document.querySelector(`#minutos-clase-${clasesElegidas[i]}`).value
+    );
+    let segundos = Number(
+      document.querySelector(`#segundos-clase-${clasesElegidas[i]}`).value
+    );
+
+    duracionTotalClases.acumuladorHoras += horas;
+    duracionTotalClases.acumuladorMinutos += minutos;
+    duracionTotalClases.acumuladorSegundos += segundos;
+  }
+
+  return duracionTotalClases;
+}
+
+function mostrarDuracionTotalClases(duracionTotalClases) {
+  document.querySelector("h2").className = "";
+
+  const mensajeEnPantalla = document.querySelector("#duracion");
+
+  mensajeEnPantalla.innerText += ` ${duracionTotalClases.acumuladorHoras} hs ${duracionTotalClases.acumuladorMinutos}'${duracionTotalClases.acumuladorSegundos}'' `;
 }
